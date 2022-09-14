@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <script src='./js/jquery.min.js'></script>
+    <script src='./js/bridge.js'></script>
+    <style type="text/css">
+	.bn {
+		padding: 8px 20px;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 20px;
+	}
+    </style>
+</head>
+<body>
+<div class="detail-content" id="app-vote">
+    <div style="display: flex; flex-direction: column;">
+        <button class="bn" onclick="showToast()">调用原生 App 展示 Toast</button>
+        <button class="bn" onclick="showToastWithCallback()">调用原生 App 展示 Toast 并且回调</button>
+        <button class="bn" onclick="startActivityWithCallback()">启动主进程 Activity</button>
+        <button class="bn" onclick="getUserInfo()">获取主进程 UserInfo</button>
+        <p class="user">暂无信息</p>
+    </div>
+</div>
+</body>
+<script type='text/javascript'>
+function showToast() {
+    var params = {
+        'message': 'hello world'
+    }
+    window.jsBridge.sendCommand('showToast', params)
+}
+
+function showToastWithCallback() {
+    var params = {
+        'message': 'hello world'
+    }
+    window.jsBridge.sendCommand('showToast', params, function(data){
+	    console.log('触发回调成功！ data:', data)
+	})
+}
+
+function startActivityWithCallback() {
+    var params = {
+        'pageName': 'TestActivity'
+    }
+    window.jsBridge.sendCommand('startActivity', params, function(data){
+	    console.log('触发回调成功！ data:', data)
+	})
+}
+
+function getUserInfo() {
+    var params = {}
+    window.jsBridge.sendCommand('getUserInfo', params, function(data){
+	    console.log('用户信息:', data)
+	    if(data){
+	        $('.user').text(data);
+	    }
+	})
+}
+</script>

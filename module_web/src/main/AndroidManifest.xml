@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sunhy.demo.web">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <receiver android:name=".broadcast.WebViewInitBoastcast"
+            android:process=":web"/>
+        <service android:name=".service.BridgeCommandService"/>
+        <activity
+            android:name=".activity.NewsDetailActivity"
+            android:exported="false"
+            android:process=":web"/>
+        <activity
+            android:name=".activity.WebActivity"
+            android:exported="false"
+            android:process=":web"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <script src='./js/bridge.js'></script>
+    <style type="text/css">
+	.bn {
+		padding: 8px 20px;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 20px;
+	}
+    </style>
+</head>
+<body>
+<div class="detail-content" id="app-vote">
+    <div style="display: flex; flex-direction: column;">
+        <button class="bn" onclick="showToast()">调用原生 App 展示 Toast</button>
+    </div>
+</div>
+</body>
+<script type='text/javascript'>
+function showToast() {
+	window.bridge.showToast('hello world')
+}
+</script>
