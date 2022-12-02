@@ -145,6 +145,7 @@ open class BaseWebView @JvmOverloads constructor(
      */
     open fun onDestroy() {
         settings.javaScriptEnabled = false
+        removeBlankMonitorRunnable()
         WebViewPool.getInstance().recycle(this)
     }
 
